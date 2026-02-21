@@ -1,9 +1,5 @@
 # Task 1: CNN Classification with Comprehensive Analysis
 
-**Author:** Dr. Anas M. Ali  
-**Email:** aaboessa@psu.edu.sa  
-**Affiliation:** Researcher, Prince Sultan University  
-
 ## 1. Project Overview & Idea Description
 This project tackles the binary classification of pneumonia from chest X-ray images using the PneumoniaMNIST dataset, a subset of the MedMNIST v2 benchmark. 
 
@@ -18,10 +14,10 @@ This project tackles the binary classification of pneumonia from chest X-ray ima
 By decomposing the majority class, the dataset distribution becomes much more balanced, preventing the model from collapsing into majority-class predictions.
 
 **Before Decomposition (Binary):**
-![Distribution Before](distribution_before.png)
+![Distribution Before](https://github.com/AnasHXH/Task_1/blob/main/results_decom/distribution_before.png)
 
 **After Decomposition (3-Class):**
-![Distribution After](distribution_after.png)
+![Distribution After](https://github.com/AnasHXH/Task_1/blob/main/results_decom/distribution_after.png)
 
 ---
 
