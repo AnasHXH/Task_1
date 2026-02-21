@@ -45,3 +45,69 @@ Task_1/
     ├── distribution_after.png
     ├── failure_cases.png
     └── metrics_summary.txt
+```
+---
+## 3. Installation & Setup
+
+**To reproduce the results, please install the required dependencies using the requirements.txt file. The primary requirements include PyTorch, torchvision, scikit-learn, transformers (for CLIP), and the official medmnist package.**
+```
+pip install -r requirements.txt
+```
+---
+## 4. Download and Analysis Dataset
+
+** Run Download_and_Analysis_dataset.ipynb
+
+---
+## 5. Train and Evaluation
+
+** Run Tutorial.ipynb
+
+---
+## 4. Model Architecture & Training Methodology
+
+**Architecture: MaxViT-T (Multi-Axis Vision Transformer). This hybrid architecture combines Convolutional Neural Networks (CNNs) for local feature extraction (e.g., small lung infiltrates) and Vision Transformers (ViTs) for global structural relationships (e.g., lung opacity).
+
+Data Augmentation: Resize to 224x224, Random Rotation (10 degrees), Random Horizontal Flip, Color Jitter, and ImageNet standard normalization.
+
+Loss Function: Weighted Cross-Entropy Loss. A weight of 2.0 was assigned to the 'Normal' class and 0.5 to the decomposed Pneumonia classes. 
+
+Hyperparameters: Adam optimizer, learning rate of 0.0001, weight decay of 1e-4, batch size of 4, trained for 32 epochs. ReduceLROnPlateau was used for learning rate scheduling. **
+
+---
+## 5. Results & Evaluation Metrics
+
+** The model achieved a best validation accuracy of 97.90% during training. Upon evaluation on the unseen test set using the binary mapping strategy, it achieved exceptional sensitivity. 
+
+Final Test Metrics:
+
+Accuracy: 0.8862
+
+Precision: 0.8988
+
+Recall: 0.8862
+
+F1-Score: 0.8816
+
+AUC: 0.9761
+
+**confusion_matrix Test:**
+![confusion_matrix Test](https://github.com/AnasHXH/Task_1/blob/main/results_test_decom/confusion_matrix.png)
+
+**ROC Curve Test:**
+![roc_curve](https://github.com/AnasHXH/Task_1/blob/main/results_test_decom/roc_curve.png)
+
+**ROC Curve Test:**
+![roc_curve](https://github.com/AnasHXH/Task_1/blob/main/results_test_decom/roc_curve.png)
+
+---
+## 6. Failure Case Analysis
+
+** The confusion matrix indicates an over-prediction bias toward the Pneumonia class (67 False Positives vs. only 4 False Negatives). In a medical screening context, minimizing false negatives (missing a disease) is heavily preferred, though it comes at the cost of lower specificity. **
+
+** Sample Misclassified Images: **
+![failure_cases](https://github.com/AnasHXH/Task_1/blob/main/results_test_decom/failure_cases.png)
+
+** Analysis of Errors: **
+
+** A visual inspection of the failure cases (Normal images predicted as Pneumonia) reveals that the model struggles with normal vascular markings, pronounced rib shadows, or minor image blurring. Because the original dataset resolution is highly lightweight (28x28 pixels), upscaling to 224x224 for the MaxViT architecture introduces interpolation artifacts. The high sensitivity enforced by the weighted loss function causes the model to flag these ambiguous, interpolated structural densities as pneumonia infiltrates. While the system acts as an excellent and safe initial screening tool, it requires secondary clinical verification for positive flags.
