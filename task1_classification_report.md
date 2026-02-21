@@ -13,9 +13,9 @@ This project tackles the binary classification of pneumonia from chest X-ray ima
 ### Data Distribution Before and After Decomposition
 By decomposing the majority class, the dataset distribution becomes much more balanced.
 
-**Before Decomposition (Binary):** ![Distribution Before](distribution_before.png)
+**Before Decomposition (Binary):** ![Distribution Before](https://github.com/AnasHXH/Task_1/blob/main/reports/distribution_before.png)
 
-**After Decomposition (3-Class):** ![Distribution After](distribution_after.png)
+**After Decomposition (3-Class):** ![Distribution After](https://github.com/AnasHXH/Task_1/blob/main/reports/distribution_after.png)
 
 ---
 
@@ -40,14 +40,14 @@ The model achieved a best validation accuracy of 97.90% during training. Upon ev
 * **AUC:** 0.9761
 
 ### Training Curves
-![Loss Curve](loss_curve.png)
-![Accuracy Curve](accuracy_curve.png)
+![Loss Curve](https://github.com/AnasHXH/Task_1/blob/main/reports/loss_curve.png)
+![Accuracy Curve](https://github.com/AnasHXH/Task_1/blob/main/reports/accuracy_curve.png)
 
 ### Receiver Operating Characteristic (ROC) & Confusion Matrix
 The model successfully identified 386 out of 390 positive pneumonia cases, achieving a 99% recall rate for the positive class.
 
-![Confusion Matrix](confusion_matrix.png)
-![ROC Curve](roc_curve.png)
+![Confusion Matrix](https://github.com/AnasHXH/Task_1/blob/main/reports/confusion_matrix.png)
+![ROC Curve](https://github.com/AnasHXH/Task_1/blob/main/reports/roc_curve.png)
 
 ---
 
@@ -55,6 +55,6 @@ The model successfully identified 386 out of 390 positive pneumonia cases, achie
 
 The confusion matrix indicates an over-prediction bias toward the Pneumonia class (67 False Positives vs. only 4 False Negatives). In a medical screening context, minimizing false negatives (missing a disease) is heavily preferred, though it comes at the cost of lower specificity. 
 
-**Sample Misclassified Images:** ![Failure Cases](failure_cases.png)
+**Sample Misclassified Images:** ![Failure Cases](https://github.com/AnasHXH/Task_1/blob/main/reports/failure_cases.png)
 
 **Analysis of Errors:** A visual inspection of the failure cases (Normal images predicted as Pneumonia) reveals that the model struggles with normal vascular markings, pronounced rib shadows, or minor image blurring. Because the original dataset resolution is highly lightweight (28x28 pixels), upscaling to 224x224 for the MaxViT architecture introduces interpolation artifacts. The high sensitivity enforced by the weighted loss function causes the model to flag these ambiguous, interpolated structural densities as pneumonia infiltrates. While the system acts as an excellent and safe initial screening tool, it requires secondary clinical verification for positive flags.
