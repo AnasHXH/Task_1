@@ -56,6 +56,9 @@ pip install -r requirements.txt
 ---
 ## 4. Download and Analysis Dataset
 
+
+** Download the weight: [Google Drive Link](https://drive.google.com/file/d/1DFWhF_euBfmUaS-2XWgMnkZgsfxvvJc6/view?usp=sharing)
+
 ** Run Download_and_Analysis_dataset.ipynb
 
 ---
@@ -64,7 +67,7 @@ pip install -r requirements.txt
 ** Run Tutorial.ipynb
 
 ---
-## 4. Model Architecture & Training Methodology
+## 6. Model Architecture & Training Methodology
 
 **Architecture: MaxViT-T (Multi-Axis Vision Transformer). This hybrid architecture combines Convolutional Neural Networks (CNNs) for local feature extraction (e.g., small lung infiltrates) and Vision Transformers (ViTs) for global structural relationships (e.g., lung opacity).
 
@@ -75,7 +78,7 @@ Loss Function: Weighted Cross-Entropy Loss. A weight of 2.0 was assigned to the 
 Hyperparameters: Adam optimizer, learning rate of 0.0001, weight decay of 1e-4, batch size of 4, trained for 32 epochs. ReduceLROnPlateau was used for learning rate scheduling. **
 
 ---
-## 5. Results & Evaluation Metrics
+## 7. Results & Evaluation Metrics
 
 ** The model achieved a best validation accuracy of 97.90% during training. Upon evaluation on the unseen test set using the binary mapping strategy, it achieved exceptional sensitivity. 
 
@@ -101,7 +104,7 @@ AUC: 0.9761
 ![roc_curve](https://github.com/AnasHXH/Task_1/blob/main/results_test_decom/roc_curve.png)
 
 ---
-## 6. Failure Case Analysis
+## 8. Failure Case Analysis
 
 ** The confusion matrix indicates an over-prediction bias toward the Pneumonia class (67 False Positives vs. only 4 False Negatives). In a medical screening context, minimizing false negatives (missing a disease) is heavily preferred, though it comes at the cost of lower specificity. **
 
