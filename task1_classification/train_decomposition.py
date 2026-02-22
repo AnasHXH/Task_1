@@ -171,7 +171,7 @@ def train_model(args):
     criterion = nn.CrossEntropyLoss(weight=weights)
     optimizer = optim.Adam(model.parameters(), lr=args.learning_rate, weight_decay=1e-4)
 
-    scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=2, verbose=True)
+    scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=2)
     nll_loss = nn.NLLLoss()
 
     best_model_wts = copy.deepcopy(model.state_dict())
